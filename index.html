@@ -137,6 +137,11 @@
     background:var(--panel);
     backdrop-filter:blur(12px);
     -webkit-backdrop-filter:blur(12px);
+    transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;
+  }
+  .photo-frame:hover{
+    transform:translateY(-4px) scale(1.02) rotate(-1deg);
+    box-shadow:0 16px 40px rgba(139,92,246,.25), var(--shadow);
   }
   .photo-frame img{
     width:100%; height:auto; display:block;
@@ -226,7 +231,9 @@
     border-left:1px solid var(--line);
     padding-bottom:38px;
     position:relative;
+    transition:padding-left .25s ease;
   }
+  .role:hover{ padding-left:32px; }
   .role:last-child{ padding-bottom:0; }
   .role::before{
     content:'';
@@ -237,6 +244,11 @@
     border:2px solid var(--paper);
     border-radius:50%;
     box-shadow:0 0 0 1px var(--accent-soft), 0 0 10px rgba(139,92,246,.35);
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease;
+  }
+  .role:hover::before{
+    transform:scale(1.6);
+    box-shadow:0 0 0 1px var(--accent-soft), 0 0 16px rgba(139,92,246,.55);
   }
   .role-date{
     font-family:'IBM Plex Mono', monospace;
@@ -250,7 +262,9 @@
     font-size:18.5px;
     letter-spacing:-.005em;
     margin:0 0 2px 0;
+    transition:color .25s ease;
   }
+  .role:hover .role-title{ color:var(--accent-deep); }
   .role-org{
     font-size:14px;
     color:var(--text-secondary);
@@ -277,11 +291,31 @@
     display:grid;
     grid-template-columns:180px 1fr;
     gap:24px;
-    padding:22px 18px;
-    margin:0 -18px;
+    padding:22px 18px 22px 26px;
+    margin:0 -18px 0 -26px;
     border-bottom:1px solid var(--line);
     border-radius:18px;
-    transition:background .2s ease, box-shadow .2s ease;
+    position:relative;
+    overflow:hidden;
+    transition:background .25s ease, box-shadow .25s ease, transform .25s cubic-bezier(.2,.8,.2,1), border-bottom-color .25s ease;
+  }
+  .project::before{
+    content:'';
+    position:absolute; top:0; bottom:0; left:0;
+    width:3px;
+    background:linear-gradient(180deg, var(--accent), var(--accent2), var(--accent3));
+    transform:scaleY(0);
+    transform-origin:top;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .project::after{
+    content:'';
+    position:absolute; top:0; left:-60%;
+    width:40%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(139,92,246,.14), transparent);
+    transform:skewX(-15deg);
+    transition:left .6s ease;
+    pointer-events:none;
   }
   .project:hover{
     background:var(--panel);
@@ -289,28 +323,46 @@
     -webkit-backdrop-filter:blur(10px);
     box-shadow:var(--shadow);
     border-bottom-color:transparent;
+    transform:translateY(-5px) scale(1.012);
   }
+  .project:hover::before{ transform:scaleY(1); }
+  .project:hover::after{ left:130%; }
   .project:last-child{ border-bottom:none; }
   .project-meta{
     font-family:'IBM Plex Mono', monospace;
     font-size:12.5px;
     color:var(--text-secondary);
   }
-  .project-meta div{ margin-bottom:6px; }
-  .project-meta .stack{ color:var(--accent-deep); font-weight:600; }
+  .project-meta div{ margin-bottom:6px; transition:transform .25s ease; }
+  .project:hover .project-meta div{ transform:translateX(2px); }
+  .project-meta .stack{ color:var(--accent-deep); font-weight:600; transition:text-shadow .25s ease; }
+  .project:hover .project-meta .stack{ text-shadow:0 0 12px rgba(139,92,246,.35); }
   .project-title{
     font-family:'Manrope', sans-serif;
     font-weight:700;
     letter-spacing:-.005em;
     font-size:17.5px;
     margin:0 0 6px 0;
+    transition:color .25s ease;
   }
+  .project:hover .project-title{ color:var(--accent-deep); }
+  .project-title::after{
+    content:'↗';
+    display:inline-block;
+    margin-left:6px;
+    opacity:0;
+    transform:translate(-4px, 2px);
+    transition:opacity .25s ease, transform .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .project:hover .project-title::after{ opacity:1; transform:translate(0,0); }
   .project-desc{
     font-size:15px;
     color:var(--ink);
     margin:0;
     max-width:56ch;
+    transition:transform .25s ease;
   }
+  .project:hover .project-desc{ transform:translateX(3px); }
 
   /* Skills */
   .skills-grid{
@@ -321,16 +373,18 @@
   .skill-row{
     border-bottom:1px solid var(--line);
     padding-bottom:10px;
+    transition:border-color .2s ease, transform .2s cubic-bezier(.2,.8,.2,1), padding-left .2s ease;
   }
-  .skill-row{ transition:border-color .2s ease; }
-  .skill-row:hover{ border-color:var(--accent); }
+  .skill-row:hover{ border-color:var(--accent); transform:translateX(6px); padding-left:4px; }
   .skill-cat{
     font-family:'IBM Plex Mono', monospace;
     font-size:12px;
     color:var(--accent-deep);
     display:block;
     margin-bottom:4px;
+    transition:color .2s ease;
   }
+  .skill-row:hover .skill-cat{ color:var(--accent); }
   .skill-vals{
     font-size:14.5px;
     color:var(--ink);
@@ -509,6 +563,17 @@
 
       <div class="project">
         <div class="project-meta">
+          <div>Senior Full-Stack Developer</div>
+          <div class="stack">C#/.NET · React</div>
+        </div>
+        <div>
+          <h3 class="project-title">QoreArk</h3>
+          <p class="project-desc">A recruiting and preparation platform for international talent moving to Germany, built end-to-end at <a href="https://qoreark.de/" target="_blank" rel="noopener">qoreark.de</a>.</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
           <div>Team of 11</div>
           <div class="stack">C#/.NET · SQL Server</div>
         </div>
@@ -537,6 +602,28 @@
         <div>
           <h3 class="project-title">Data Management System</h3>
           <p class="project-desc">End-to-end office management platform covering records, workflow, and integrated email sending.</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <div>Personal project</div>
+          <div class="stack">FastAPI · React · Expo</div>
+        </div>
+        <div>
+          <h3 class="project-title">BookLibrary</h3>
+          <p class="project-desc">A book-catalog monorepo built solo: a FastAPI/SQLAlchemy backend, a React + Vite admin panel for managing entries, and an Expo React Native app for browsing them on mobile.</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <div>In development</div>
+          <div class="stack">Booking · Payments · Exams</div>
+        </div>
+        <div>
+          <h3 class="project-title">Tutor Booking Platform</h3>
+          <p class="project-desc">A marketplace connecting teachers and students: teachers publish their availability calendar, students book and pay for sessions through integrated payment methods, and an admin board conducts final exams to assess student progress.</p>
         </div>
       </div>
 
@@ -617,7 +704,6 @@
       <a href="https://t.me/ssalakin" target="_blank" rel="noopener">Telegram</a>
       <a href="https://github.com/salakin">GitHub</a>
       <a href="https://linkedin.com/in/sarajus-salakin">LinkedIn</a>
-      <a href="https://qoreark.de/" target="_blank" rel="noopener">qoreark.de</a>
     </div>
     <p class="footer-note">Md Sarajus Salakin · Dhaka, Bangladesh</p>
   </footer>
