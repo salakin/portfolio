@@ -180,7 +180,7 @@
     line-height:1.12;
     letter-spacing:-.01em;
     margin:0 0 22px 0;
-    max-width:13ch;
+    max-width:24ch;
     background:linear-gradient(100deg, var(--accent-deep) 10%, var(--accent) 45%, var(--accent2) 75%, var(--accent3) 95%);
     -webkit-background-clip:text;
     background-clip:text;
@@ -288,6 +288,18 @@
     font-family:'IBM Plex Mono', monospace;
     font-size:12.5px;
     color:var(--text-secondary);
+  }
+  .stat-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:#fff;
+    background:linear-gradient(100deg, var(--accent-deep), var(--accent2));
+    border-radius:20px;
+    padding:2px 8px;
+    display:inline-block;
+    margin-bottom:6px;
   }
 
   /* Experience timeline */
@@ -479,6 +491,71 @@
     font-size:14.5px;
   }
 
+  /* Landing pages */
+  .landing-panel{
+    position:relative;
+  }
+  .landing-lede{
+    font-size:15px;
+    color:var(--text-secondary);
+    margin:0 0 26px 0;
+    max-width:62ch;
+  }
+  .landing-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .landing-card{
+    position:relative;
+    overflow:hidden;
+    padding:20px 22px;
+    border:1px solid var(--glass-border);
+    border-radius:16px;
+    background:
+      radial-gradient(140% 160% at 0% 0%, rgba(139,92,246,.20), transparent 55%),
+      radial-gradient(140% 160% at 100% 0%, rgba(34,211,238,.18), transparent 55%),
+      radial-gradient(160% 180% at 50% 120%, rgba(244,114,182,.15), transparent 55%),
+      var(--panel);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    box-shadow:0 2px 10px rgba(34,31,53,.05);
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .25s ease;
+  }
+  .landing-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+    border-color:var(--accent);
+  }
+  .landing-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    margin:0 0 8px 0;
+    display:block;
+  }
+  .landing-name{
+    font-family:'Manrope', sans-serif;
+    font-weight:700;
+    font-size:16.5px;
+    margin:0 0 6px 0;
+  }
+  .landing-name a{
+    color:var(--ink);
+    border-bottom:1px solid transparent;
+  }
+  .landing-card:hover .landing-name a{
+    color:var(--accent-deep);
+    border-color:var(--accent-deep);
+  }
+  .landing-desc{
+    font-size:13.5px;
+    color:var(--text-secondary);
+    margin:0;
+  }
+
   footer{
     padding:52px 0 72px 0;
     border-top:1px solid var(--line);
@@ -521,6 +598,7 @@
     .project{ grid-template-columns:1fr; gap:10px; }
     .skills-grid{ grid-template-columns:1fr; }
     .cred-grid{ grid-template-columns:1fr; }
+    .landing-grid{ grid-template-columns:1fr; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -553,8 +631,8 @@
     <p class="tag">Full Stack Software Developer <span>·</span> Remote, Full-Time <span>·</span> Dhaka, Bangladesh</p>
     <div class="hero-row">
       <div>
-        <h1 class="display">Twelve years turning specs into running software.</h1>
-        <p class="lede">C# and ASP.NET Core on the backend, React and Next.js on the front — with the SQL, cloud deployment, and code-review habits to keep it all shipping on schedule.</p>
+        <h1 class="display">Backend, frontend, servers, and landing pages — I build the whole pipeline.</h1>
+        <p class="lede">C# and ASP.NET Core on the backend, React and Next.js on the front — with the SQL, domain and server setup (Nginx, DNS, SSL), and code-review habits to keep it all shipping on schedule.</p>
         <div class="contact-row">
           <span>salakin2010@gmail.com</span>
           <a href="https://wa.me/8801680041625" target="_blank" rel="noopener">+880 1680 041625 (WhatsApp)</a>
@@ -576,7 +654,7 @@
     </div>
     <div class="about-grid">
       <div>
-        <p>I've spent the last twelve years moving between backend architecture, database design, and front-end delivery — five of those years focused on C# and ASP.NET Core. My work spans client platforms built for Upwork clients, enterprise systems for healthcare and business applications, and my own project, QoreArk, a preparation platform for international talent moving to Germany.</p>
+        <p>I've spent the last twelve years moving between backend architecture, database design, and front-end delivery — five of those years focused on C# and ASP.NET Core. My work spans client platforms built for Upwork clients, enterprise systems for healthcare and business applications, and my own project, QoreArk, a preparation platform for international talent moving to Germany. Alongside that, I've also designed and built 500+ landing pages for various clients.</p>
         <p>I care about clean, maintainable code and predictable delivery — and lately, about using AI tools like Claude and ChatGPT deliberately to move faster without cutting corners on quality.</p>
       </div>
       <div class="stat-list">
@@ -591,6 +669,11 @@
         <div class="stat">
           <span class="stat-num">3</span>
           <span class="stat-label">team-built systems led or contributed to</span>
+        </div>
+        <div class="stat">
+          <span class="stat-badge">★ Also</span>
+          <span class="stat-num">500+</span>
+          <span class="stat-label">landing pages built for clients</span>
         </div>
       </div>
     </div>
@@ -625,6 +708,10 @@
       <div class="skill-row">
         <span class="skill-cat">Cloud &amp; DevOps</span>
         <span class="skill-vals">AWS, Azure, DigitalOcean, Vultr, Hostinger, Git, Docker (basics), Cloudflare</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Domains &amp; Server Setup</span>
+        <span class="skill-vals">Domain registration &amp; DNS, Nginx (reverse proxy, SSL, load balancing), VPS provisioning and production deployment</span>
       </div>
       <div class="skill-row">
         <span class="skill-cat">AI-Assisted Development</span>
@@ -800,6 +887,55 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <section id="landing-pages">
+    <div class="landing-panel">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Landing Pages</h2>
+    </div>
+    <p class="landing-lede">Alongside full-stack development, I've built 500+ landing pages for clients — mostly performance-marketing funnels and brand sites. A few examples:</p>
+    <div class="landing-grid">
+
+      <div class="landing-card">
+        <span class="landing-tag">Marketing Agency</span>
+        <h3 class="landing-name"><a href="https://1mcompany.com/" target="_blank" rel="noopener">1M Company</a></h3>
+        <p class="landing-desc">Performance marketing agency site — AI-driven lead generation and cross-channel advertising across insurance, home improvement, solar, and debt relief.</p>
+      </div>
+
+      <div class="landing-card">
+        <span class="landing-tag">Marketing Agency</span>
+        <h3 class="landing-name"><a href="https://arboceandigital.com/" target="_blank" rel="noopener">Arb Ocean Digital</a></h3>
+        <p class="landing-desc">Performance marketing agency site built around the same lead-gen positioning — cross-channel campaigns with 5.6M+ leads generated for clients.</p>
+      </div>
+
+      <div class="landing-card">
+        <span class="landing-tag">Insurance Funnel</span>
+        <h3 class="landing-name"><a href="https://yourautonavigator.com/" target="_blank" rel="noopener">Your Auto Navigator</a></h3>
+        <p class="landing-desc">Auto insurance quote-comparison funnel — vehicle details in, rate comparisons out.</p>
+      </div>
+
+      <div class="landing-card">
+        <span class="landing-tag">Luxury / Automotive</span>
+        <h3 class="landing-name"><a href="https://www.chicane8.com/" target="_blank" rel="noopener">Chicane 8</a></h3>
+        <p class="landing-desc">Private car vault and luxury club — secure vehicle storage, concierge service, and exclusive member experiences.</p>
+      </div>
+
+      <div class="landing-card">
+        <span class="landing-tag">Ad Infrastructure</span>
+        <h3 class="landing-name"><a href="https://digitaluprisingllc.com/" target="_blank" rel="noopener">Digital Uprising LLC</a></h3>
+        <p class="landing-desc">Advertising infrastructure and media consulting for advertisers and affiliates scaling campaigns across Meta, TikTok, and Google.</p>
+      </div>
+
+      <div class="landing-card">
+        <span class="landing-tag">Shopify Store</span>
+        <h3 class="landing-name"><a href="https://vivxocandle.com/" target="_blank" rel="noopener">Vivxo Candle</a></h3>
+        <p class="landing-desc">E-commerce storefront for handmade 100% soy wax candles in decorative molds, with bulk party-favor and custom orders.</p>
+      </div>
+
+    </div>
     </div>
   </section>
 
