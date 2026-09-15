@@ -74,8 +74,76 @@
     position:relative;
   }
 
+  .top-bar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:flex-start;
+    gap:2px;
+    padding:66px 0 20px 0;
+  }
+  .top-brand{
+    position:fixed;
+    top:20px;
+    left:clamp(18px, 6vw, 96px);
+    z-index:50;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border-bottom:none;
+    white-space:nowrap;
+  }
+  .top-brand:hover{
+    border-bottom:none;
+  }
+  .logo-mark{
+    flex:0 0 auto;
+    width:30px;
+    height:30px;
+    border-radius:9px;
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Manrope', sans-serif;
+    font-weight:800;
+    font-size:12.5px;
+    letter-spacing:-.02em;
+    box-shadow:0 3px 10px rgba(139,92,246,.35);
+  }
+  .logo-text{
+    font-family:'Manrope', sans-serif;
+    font-weight:800;
+    font-size:15px;
+    letter-spacing:-.01em;
+    background:linear-gradient(100deg, var(--accent-deep), var(--accent), var(--accent2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .top-links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    gap:2px;
+    margin-left:3px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+  }
+  .top-links a{
+    color:var(--text-secondary);
+    border-bottom:1px solid transparent;
+    padding:7px 13px;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .top-links a:hover{
+    border-color:var(--accent-deep);
+    color:var(--accent-deep);
+  }
+
   header.hero{
-    padding-top:clamp(56px,10vh,96px);
+    padding-top:8px;
     padding-bottom:64px;
   }
 
@@ -443,6 +511,9 @@
   @media (max-width: 680px){
     .spine{ left:16px; }
     .wrap{ padding:0 22px 0 34px; }
+    .top-brand{ top:14px; left:16px; }
+    .logo-text{ display:none; }
+    .top-bar{ padding-top:56px; }
     .hero-row{ flex-direction:column-reverse; gap:22px; }
     .photo-frame{ width:140px; height:auto; }
     .about-grid{ grid-template-columns:1fr; gap:26px; }
@@ -461,11 +532,25 @@
 <body>
 
 <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+<a href="#" class="top-brand" aria-label="Md Sarajus Salakin — back to top">
+  <span class="logo-mark">MS</span>
+  <span class="logo-text">Salakin</span>
+</a>
 <div class="spine"></div>
 <div class="wrap">
 
+  <div class="top-bar">
+    <nav class="top-links">
+      <a href="mailto:salakin2010@gmail.com">Email</a>
+      <a href="https://wa.me/8801680041625" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://t.me/ssalakin" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://github.com/salakin">GitHub</a>
+      <a href="https://linkedin.com/in/sarajus-salakin">LinkedIn</a>
+    </nav>
+  </div>
+
   <header class="hero">
-    <p class="tag">Full Stack Software Developer <span>·</span> Dhaka, Bangladesh</p>
+    <p class="tag">Full Stack Software Developer <span>·</span> Remote, Full-Time <span>·</span> Dhaka, Bangladesh</p>
     <div class="hero-row">
       <div>
         <h1 class="display">Twelve years turning specs into running software.</h1>
@@ -511,9 +596,46 @@
     </div>
   </section>
 
-  <section id="experience">
+  <section id="skills">
     <div class="section-head">
       <span class="section-num">02</span>
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-cat">Languages</span>
+        <span class="skill-vals">C#, SQL, JavaScript</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Backend</span>
+        <span class="skill-vals">ASP.NET Core, RESTful APIs</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">ORM</span>
+        <span class="skill-vals">Entity Framework Core</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Databases</span>
+        <span class="skill-vals">SQL Server, MySQL, PostgreSQL</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Frontend</span>
+        <span class="skill-vals">React, Next.js, AngularJS, Angular, HTML, CSS3, SCSS, Tailwind CSS</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">Cloud &amp; DevOps</span>
+        <span class="skill-vals">AWS, Azure, DigitalOcean, Vultr, Hostinger, Git, Docker (basics), Cloudflare</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">AI-Assisted Development</span>
+        <span class="skill-vals">Claude, ChatGPT — for faster coding, debugging, and documentation</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <span class="section-num">03</span>
       <h2 class="section-title">Experience</h2>
     </div>
     <div class="timeline">
@@ -554,9 +676,38 @@
     </div>
   </section>
 
+  <section id="credentials">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Education &amp; Credentials</h2>
+    </div>
+    <div class="cred-grid">
+      <div class="cred-block">
+        <h3>Education</h3>
+        <ul>
+          <li>B.Sc in Computer Science and Engineering (CSE) — Daffodil International University, 2014, CGPA 3.37</li>
+        </ul>
+      </div>
+      <div class="cred-block">
+        <h3>Certifications</h3>
+        <ul>
+          <li>Professional Programming with C# — Dev Skill</li>
+          <li>Professional Programming with Python — Dev Skill</li>
+        </ul>
+      </div>
+      <div class="cred-block">
+        <h3>Languages</h3>
+        <ul>
+          <li>Bengali — Native</li>
+          <li>English — IELTS 6.00</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section id="projects">
     <div class="section-head">
-      <span class="section-num">03</span>
+      <span class="section-num">05</span>
       <h2 class="section-title">Projects</h2>
     </div>
     <div class="projects">
@@ -627,72 +778,28 @@
         </div>
       </div>
 
-    </div>
-  </section>
+      <div class="project">
+        <div class="project-meta">
+          <div>Completed</div>
+          <div class="stack">C#/.NET · Clean Architecture · React</div>
+        </div>
+        <div>
+          <h3 class="project-title">HireBoard</h3>
+          <p class="project-desc">A hiring platform where companies post jobs and candidates search, apply, upload CVs, and track their applications — with role-based access and dedicated employer dashboards. Backend built with Clean Architecture, Entity Framework, and SQL Server Express.</p>
+        </div>
+      </div>
 
-  <section id="skills">
-    <div class="section-head">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Skills</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-row">
-        <span class="skill-cat">Languages</span>
-        <span class="skill-vals">C#, SQL, JavaScript</span>
+      <div class="project">
+        <div class="project-meta">
+          <div>In development</div>
+          <div class="stack">Catalog · Orders · Payments</div>
+        </div>
+        <div>
+          <h3 class="project-title">E-Commerce Platform</h3>
+          <p class="project-desc">A full online shopping system: products, categories, cart, orders, payments, inventory, discounts, and reviews, with an admin panel for managing the whole store.</p>
+        </div>
       </div>
-      <div class="skill-row">
-        <span class="skill-cat">Backend</span>
-        <span class="skill-vals">ASP.NET Core, RESTful APIs</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">ORM</span>
-        <span class="skill-vals">Entity Framework Core</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">Databases</span>
-        <span class="skill-vals">SQL Server, MySQL, PostgreSQL</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">Frontend</span>
-        <span class="skill-vals">React, Next.js, AngularJS, Angular, HTML, CSS3, SCSS, Tailwind CSS</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">Cloud &amp; DevOps</span>
-        <span class="skill-vals">AWS, Azure, DigitalOcean, Vultr, Hostinger, Git, Docker (basics), Cloudflare</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">AI-Assisted Development</span>
-        <span class="skill-vals">Claude, ChatGPT — for faster coding, debugging, and documentation</span>
-      </div>
-    </div>
-  </section>
 
-  <section id="credentials">
-    <div class="section-head">
-      <span class="section-num">05</span>
-      <h2 class="section-title">Education &amp; Credentials</h2>
-    </div>
-    <div class="cred-grid">
-      <div class="cred-block">
-        <h3>Education</h3>
-        <ul>
-          <li>B.Sc in Computer Science and Engineering (CSE) — Daffodil International University, 2014, CGPA 3.37</li>
-        </ul>
-      </div>
-      <div class="cred-block">
-        <h3>Certifications</h3>
-        <ul>
-          <li>Professional Programming with C# — Dev Skill</li>
-          <li>Professional Programming with Python — Dev Skill</li>
-        </ul>
-      </div>
-      <div class="cred-block">
-        <h3>Languages</h3>
-        <ul>
-          <li>Bengali — Native</li>
-          <li>English — IELTS 6.00</li>
-        </ul>
-      </div>
     </div>
   </section>
 
